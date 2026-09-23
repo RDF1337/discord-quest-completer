@@ -32,21 +32,24 @@ Old JavaScript snippets executed via DevTools (`Ctrl + Shift + I`) sent spoofed 
 1. **Accept the Quest:**  
    Open Discord, navigate to **User Settings → Quests** (or the **Discover → Quests** tab), and click **Accept Quest**.
 
-2. **Run the Script:**  
+1. [**Download the Script**](https://github.com/RDF1337/discord-quest-completer/releases/download/v1.0.0/discord-quest.ps1)
+
+3. **Run the Script:**  
    Open PowerShell in the folder containing the script and run:
    ```powershell
    .\discord-quest.ps1
-3. **Select the Game:**  
+   
+4. **Select the Game:**  
    Enter the game name when prompted (e.g., `Aniimo` or `Marvel Rivals`). The script will fetch the application details from Discord's database and launch a small dummy window.
 
-4. **Complete the Quest:**
+5. **Complete the Quest:**
    * **Play on Desktop:** Leave the dummy game window open for 15 minutes. Discord will track your activity automatically.
    * **Stream on Desktop:** Join a voice channel with at least one friend or alt account. Start screen sharing and select the **dummy game window** specifically (do not stream the entire screen).
 
-5. **Clean Up:**  
+6. **Clean Up:**  
    Once Discord notifies you that the quest is complete (100% progress), return to the PowerShell window and press **Enter**. The script will automatically terminate the dummy process and remove temporary files from `%TEMP%`.
 
-6. **Claim Reward:**  
+7. **Claim Reward:**  
    Go to **User Settings → Gift Inventory** (or the Quests tab) and claim your reward.
 
 ---
