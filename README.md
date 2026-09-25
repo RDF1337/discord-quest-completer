@@ -3,7 +3,7 @@
 A lightweight, standalone Windows CLI utility designed to safely complete Discord Quests without downloading full games or injecting into the Discord client.
 
 <p align="center">
-  <img src="preview.png" alt="Discord Quest Completer Preview" width="95%">
+  <img src="preview.png" alt="Discord Quest Completer Preview" width="100%">
 </p>
 
 ---
