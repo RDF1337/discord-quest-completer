@@ -1,59 +1,73 @@
-# Discord Quest Сompleter
+# Discord Quest Completer
 
-A lightweight PowerShell script designed to safely complete Discord Quests without downloading full game files or injecting into the Discord client.
+A lightweight, standalone Windows CLI utility designed to safely complete Discord Quests without downloading full games or injecting into the Discord client.
 
----
-
-### Preview
 <p align="center">
-  <img src="preview.png" alt="Preview" width="85%">
+  <img src="preview.png" alt="Discord Quest Completer Preview" width="650">
 </p>
 
 ---
 
 ### Why is this method safer than DevTools console scripts?
 
-Old JavaScript snippets executed via DevTools (`Ctrl + Shift + I`) sent spoofed heartbeat and API requests directly through the user's Discord session. This frequently triggered Discord's automated abuse detection, resulting in *"Quest Activity Notice"* warnings or account-level quest suspensions.
+Old JavaScript snippets pasted into DevTools (`Ctrl + Shift + I`) sent spoofed heartbeat and API requests directly through the user's active session. This regularly triggered Discord's automated abuse detection, leading to *"Quest Activity Notice"* warnings or account quest restrictions.
 
 > **How this tool works:**  
-> This script does **not** touch Discord's memory, client files, or internal APIs. Instead, it queries Discord's official public list of detectable applications (`detectable`), compiles a minimal dummy window on the fly using the built-in Windows C# compiler (`csc.exe`), and runs it locally. To Discord's native desktop game scanner, it appears as a 100% legitimate running game.
+> This application does **not** touch Discord's memory, client files, or internal private APIs. It queries Discord's official public detectable games directory (`/api/v9/applications/detectable`), replicates the verified directory structure, and spawns a native GUI dummy window. Discord's desktop client detects it as a genuine running game, enabling both **Play** and **Stream** quest progression without risk.
+
+---
+
+### Features
+
+* **Zero Dependencies:** Fully portable standalone `.exe` – no Python, .NET SDK, or PowerShell script execution rights required.
+* **Stream & Play Support:** Generates an authentic GUI game window that can be selected directly in Discord screen share.
+* **Rich Dashboard:** Interactive terminal UI featuring real-time progress, PID monitoring, and API status.
+* **Dynamic Window Title:** Displays the remaining time directly in the taskbar / terminal tab title.
+* **Auto-Termination & Grace Buffer:** Automatically shuts down the dummy process and cleans up temporary files after 15 minutes and 15 seconds (including a buffer for API latency).
+* **Process Tree Cleanup:** Automatically kills orphan processes to prevent file lock errors (`[WinError 32]`).
 
 ---
 
 ### Requirements
 
+* **Windows 10 or Windows 11** (64-bit).
 * **Discord Desktop Client** for Windows.
-* **Windows 10 or Windows 11** (built-in PowerShell and .NET Framework are sufficient out of the box).
 
 ---
 
 ### How to Use
 
 1. **Accept the Quest:**  
-   Open Discord, navigate to **User Settings → Quests** (or the **Discover → Quests** tab), and click **Accept Quest**.
+   Open Discord, go to **User Settings → Quests** (or the **Discover → Quests** tab), and click **Accept Quest**.
 
-1. [**Download the Script**](https://github.com/RDF1337/discord-quest-completer/releases/download/v1.0.0/discord-quest.ps1)
+2. **Download & Run:**  
+   Grab the latest `DiscordQuestCompleter.exe` from the **[Releases](../../releases)** section and run it (either double-click or launch via terminal).
 
-3. **Run the Script:**  
-   Open PowerShell in the folder containing the script and run:
-   ```powershell
-   .\discord-quest.ps1
-   
-4. **Select the Game:**  
-   Enter the game name when prompted (e.g., `Aniimo` or `Marvel Rivals`). The script will fetch the application details from Discord's database and launch a small dummy window.
+3. **Select the Game:**  
+   Type the game name when prompted (e.g., `Apex Legends`, `Marvel Rivals`, or `Aniimo`). The tool will resolve the game ID and executable name from Discord's directory and launch the dummy window.
 
-5. **Complete the Quest:**
-   * **Play on Desktop:** Leave the dummy game window open for 15 minutes. Discord will track your activity automatically.
-   * **Stream on Desktop:** Join a voice channel with at least one friend or alt account. Start screen sharing and select the **dummy game window** specifically (do not stream the entire screen).
+4. **Complete the Quest:**
+   * **Play on Desktop:** Leave the spawned game window open. Discord will automatically track your playtime.
+   * **Stream on Desktop:** Join a voice channel with at least one other participant. Start screen sharing and choose the **game window** specifically (do not share the entire desktop).
 
-6. **Clean Up:**  
-   Once Discord notifies you that the quest is complete (100% progress), return to the PowerShell window and press **Enter**. The script will automatically terminate the dummy process and remove temporary files from `%TEMP%`.
+5. **Finish:**  
+   Once the timer runs down, an audio chime will notify you. The application automatically closes the dummy window and wipes temporary data from `%TEMP%`.
 
-7. **Claim Reward:**  
-   Go to **User Settings → Gift Inventory** (or the Quests tab) and claim your reward.
+6. **Claim Reward:**  
+   Head over to **User Settings → Gift Inventory** (or the Quests tab) in Discord and claim your reward.
 
 ---
 
+### CLI Options
+
+You can also pass arguments directly (useful for desktop shortcuts):
+
+```cmd
+DiscordQuestCompleter.exe "Apex Legends"
+DiscordQuestCompleter.exe --game "Marvel Rivals" --duration 915
+```
+
+---
 ### Disclaimer of Liability
 
 This project is intended strictly for educational and personal utility purposes.
