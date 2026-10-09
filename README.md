@@ -19,12 +19,16 @@ Old JavaScript snippets pasted into DevTools (`Ctrl + Shift + I`) sent spoofed h
 
 ### Features
 
-* **Zero Dependencies:** Fully portable standalone `.exe` – no Python, .NET SDK, or PowerShell script execution rights required.
-* **Stream & Play Support:** Generates an authentic GUI game window that can be selected directly in Discord screen share.
-* **Rich Dashboard:** Interactive terminal UI featuring real-time progress, PID monitoring, and API status.
+* **Zero Dependencies:** Fully portable standalone `.exe` — no Python, .NET SDK, or PowerShell script execution rights required.
+* **Stream & Play Support:** Generates an authentic, centered GUI game window with taskbar presence that can be streamed directly into voice channels.
+* **Discord IPC & Steam Integration:** Dispatches native `SET_ACTIVITY` Rich Presence payloads and writes Steam library manifests (`appmanifest_<id>.acf`) for games cataloged on Steam.
+* **Intelligent EXE Resolution:** Automatically infers franchise paths (e.g., predicting `fc27.exe` from prior *EA Sports FC* releases), filters runtime wrappers (`javaw.exe`, `python.exe`), and synthesizes clean fallback binaries.
+* **Token-Based Fuzzy Search:** Fast search matching ordered keywords (e.g., typing `ea fc 27` instantly resolves `EA Sports FC 27`).
+* **1-Hour API Cache:** Caches Discord's ~24,000 detectable titles locally, making subsequent launches instantaneous.
+* **Rich Dashboard:** Interactive terminal UI featuring real-time progress, PID monitoring, and API badges.
 * **Dynamic Window Title:** Displays the remaining time directly in the taskbar / terminal tab title.
-* **Auto-Termination & Grace Buffer:** Automatically shuts down the dummy process and cleans up temporary files after 15 minutes and 15 seconds (including a buffer for API latency).
-* **Process Tree Cleanup:** Automatically kills orphan processes to prevent file lock errors (`[WinError 32]`).
+* **Auto-Termination & Grace Buffer:** Automatically shuts down the dummy process and cleans up temporary files after 15 minutes and 15 seconds (including a latency buffer).
+* **Process Tree Cleanup:** Multi-stage termination prevents orphan background processes and file lock errors (`[WinError 32]`).
 
 ---
 
@@ -58,13 +62,32 @@ Old JavaScript snippets pasted into DevTools (`Ctrl + Shift + I`) sent spoofed h
 
 ---
 
+### Troubleshooting & Manual Game Detection
+
+If Discord does not attach to the game within the first 10 seconds:
+1. Open Discord **User Settings ⚙️** → **Registered Games** (or **Game Activity**).
+2. Click **"Not seeing your game? Add it!"**.
+3. Select the opened game window from the dropdown menu and click **Add Game**.
+4. Discord will bind the window to the official entry and progress the quest timer immediately.
+
+---
+
 ### CLI Options
 
 You can also pass arguments directly (useful for desktop shortcuts):
 
 ```cmd
+:: Search and launch by title
 DiscordQuestCompleter.exe "Apex Legends"
+
+:: Custom duration (in seconds)
 DiscordQuestCompleter.exe --game "Marvel Rivals" --duration 915
+
+:: Override executable name manually
+DiscordQuestCompleter.exe "AION 2" --exe AION2.exe
+
+:: List matching games without launching
+DiscordQuestCompleter.exe --list "EA Sports"
 ```
 
 ---
