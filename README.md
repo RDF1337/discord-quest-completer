@@ -1,4 +1,4 @@
-# Discord Quest Completer
+# <img src="icon.ico" width="30" height="30" alt="Logo"> Discord Quest Completer
 
 A lightweight, standalone Windows CLI utility designed to safely complete Discord Quests without downloading full games or injecting into the Discord client.
 
