@@ -1,3 +1,7 @@
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:181825,100:2a243d&height=130&section=header&text=discord-quest-completer&fontSize=32&fontColor=a6e3a1&fontAlignY=42&desc=Standalone%20Windows%20CLI%20to%20complete%20Discord%20Quests%20safely&descSize=14&descAlignY=68&descColor=cdd6f4" width="100%" />
+</div>
+
 # <img src="icon.ico" width="30" height="30" alt="Logo"> Discord Quest Completer
 
 A lightweight, standalone Windows CLI utility designed to safely complete Discord Quests without downloading full games or injecting into the Discord client.
